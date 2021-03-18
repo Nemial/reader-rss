@@ -9,7 +9,6 @@
 4. And launch this project
     ````
    make start
-   
 ## Requirements
 * PostgreSQL => 12.6
 * PHP => 7.4
