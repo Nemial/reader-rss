@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Element;
+use App\Models\Word;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -23,11 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $parsedXml = simplexml_load_file('https://www.theregister.co.uk/software/headlines.atom');
-        foreach ($parsedXml->entry as $item) {
-            dd($item);
-        }
-        ddd();
-        return view('home');
+        $elements = Element::all();
+        $topWords = Word::orderBy('count', 'desc')->limit(10)->get();
+        return view('element.index', ['elements' => $elements, 'words' => $topWords]);
     }
 }

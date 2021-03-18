@@ -15,7 +15,7 @@ class CreateElementsTable extends Migration
     {
         Schema::create('elements', function (Blueprint $table) {
             $table->id();
-            $table->json('author');
+            $table->string('author');
             $table->string('link');
             $table->string('title');
             $table->text('summary');
